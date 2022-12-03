@@ -42,13 +42,15 @@
 
 (defn upper-case?
   [s]
-  (-> (str/upper-case s)
-      (= s)))
+  (let [s2 (str s)]
+    (-> (str/upper-case s2)
+        (= s2))))
 
 (defn lower-case?
   [s]
-  (-> (str/lower-case s)
-      (= s)))
+  (let [s2 (str s)]
+    (-> (str/lower-case s2)
+        (= s2))))
 
 (defn sum-numbers-in-str
   [s]
@@ -90,4 +92,9 @@
        (map (fn [b] (char (Long/parseLong b 2))))
        (apply str)))
 
+(defn split-str-in-middle
+  [s]
+  (let [middle (/ (count s) 2)]
+    (->> (split-at middle s)
+         (map set))))
 
