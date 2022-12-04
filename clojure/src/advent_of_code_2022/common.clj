@@ -52,10 +52,14 @@
     (-> (str/lower-case s2)
         (= s2))))
 
-(defn sum-numbers-in-str
+(defn numbers-in-string->number-seq
   [s]
   (->> (re-seq #"\d+" s)
-       (map (fn [n] (Integer. n)))
+       (map (fn [n] (Integer. n)))))
+
+(defn sum-numbers-in-str
+  [s]
+  (->> numbers-in-string->number-seq s
        (apply +)))
 
 (defn hex?
