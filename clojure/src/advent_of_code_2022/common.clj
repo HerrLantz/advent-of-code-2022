@@ -1,8 +1,7 @@
 (ns advent-of-code-2022.common
-  (:require [clojure.string :as str]
-            [clojure.java.io :as io]
-            [clojure.data :as data]
-            [clojure.data.json :as json]))
+  (:require
+   [clojure.java.io :as io]
+   [clojure.string :as str]))
 
 (defn file-to-string-list
   [input-file-name]
@@ -102,3 +101,6 @@
     (->> (split-at middle s)
          (map set))))
 
+(defn all-unique?
+  [l]
+  (= (count l) (count (set l))))

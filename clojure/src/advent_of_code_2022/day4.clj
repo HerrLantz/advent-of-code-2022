@@ -25,13 +25,12 @@
        (map common/numbers-in-string->number-seq)
        (map (fn [m] (partition 2 m)))))
 
-(def part1 (->> (partition-input "day4.txt")
-                (map (fn [m] (apply range-contains? m)))
-                (filter identity)
-                count))
+(defn solve
+  [venn-fn]
+  (->> (partition-input "day4.txt")
+       (map (fn [m] (apply venn-fn m)))
+       (filter identity)
+       count))
 
-
-(def part2 (->> (partition-input "day4.txt")
-                (map (fn [m] (apply ranges-intersects? m)))
-                (filter identity)
-                count))
+(def part1 (solve range-contains?))
+(def part2 (solve ranges-intersects?))
